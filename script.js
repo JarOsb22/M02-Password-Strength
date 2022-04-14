@@ -1,23 +1,30 @@
-var password = prompt("Enter a password: ")
-
-function isStrongPassword(password){
-  while (isStrong = false){
-  if (password >= 8 && password.indexOf(password == -1)){
-    for (let i = 0; i < password.length; i++) {
-      charCode = password.charCodeAt(i);
-      if (charCode >= 65 && charCode <= 90){
-        isStrong = true
-      }
+//required method
+function isStrongPassword(pwd){
+    if(pwd.length<8){
+        return false;
     }
-  }
-  }  
-  return isStrong
-  }
 
-isStrong = isStrongPassword(password);
-if (isStrong){
-  alert(password + " is strong");
+    if(pwd.indexOf("password") != -1){
+        return false;
+    }
+
+    var upper_char_found=false;
+    for(var i=0;i<pwd.length;i++){
+        
+        var code=pwd.charCodeAt(i);
+       
+        if(code>=65 && code<=90){
+            upper_char_found=true;
+   
+            break;
+        }
+    }
+    return upper_char_found;
 }
-else{
-  alert(password + " is not strong");
-}
+
+//testing the method
+console.log(isStrongPassword("Qwerty"));
+console.log(isStrongPassword("passwordQwerty"));
+console.log(isStrongPassword("qwerty123"));
+console.log(isStrongPassword("Qwerty123"));
+
